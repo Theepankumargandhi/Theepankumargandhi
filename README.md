@@ -25,6 +25,6 @@
 📫 How to reach me:
 - 📧 Email: tgandhi1107@gmail.com
 - 💼 LinkedIn: [linkedin.com/in/theepankumar](https://www.linkedin.com/in/theepankumar/)
-- 🌐 Portfolio (Coming Soon!)
+- 🌐 Portfolio [theepan-portfolio.netlify.app]
 
 ⚡ Fun fact: I love trekking in the Nilgiris and baking cinnamon rolls on weekends 🍪⛰️
