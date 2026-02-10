@@ -1,6 +1,6 @@
 ## Hi, I’m Theepan
 
-I build machine learning systems that actually run in production — not just models in notebooks.
+I build machine learning systems that actually run in production - not just models in notebooks.
 
 Right now I’m finishing my Master’s in Data Science at Illinois Institute of Technology, and most of my work sits at the intersection of:
 
@@ -22,7 +22,7 @@ Here are a few projects that represent the kind of work I like doing.
 I built a multi-agent AutoML system that can generate pipelines, track experiments, and deploy models automatically.  
 It uses LangGraph for orchestration, MLflow for tracking, and DVC for versioning, with everything containerized and deployed on AWS.
 
-What I cared about here wasn’t just accuracy — it was reproducibility and automation.
+What I cared about here wasn’t just accuracy - it was reproducibility and automation.
 
 ---
 
