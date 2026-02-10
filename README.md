@@ -1,5 +1,116 @@
-# 💫 About Me:
-## Hi, I’m Theepan<br><br>I build machine learning systems that actually run in production — not just models in notebooks.<br><br>Right now I’m finishing my Master’s in Data Science at Illinois Institute of Technology, and most of my work sits at the intersection of:<br><br>- Retrieval-augmented generation (RAG)<br>- Multi-agent LLM systems<br>- Recommender systems and ranking<br>- MLOps and deployment pipelines<br>- Real-time inference and monitoring<br><br>I enjoy building full systems end-to-end: training, evaluation, deployment, and observability.<br><br>---<br><br>## What I’ve Been Building Recently<br><br>Here are a few projects that represent the kind of work I like doing.<br><br>### AutoML Agents with LangGraph<br>I built a multi-agent AutoML system that can generate pipelines, track experiments, and deploy models automatically.  <br>It uses LangGraph for orchestration, MLflow for tracking, and DVC for versioning, with everything containerized and deployed on AWS.<br><br>What I cared about here wasn’t just accuracy — it was reproducibility and automation.<br><br>---<br><br>### Multimodal RAG Assistant<br>This project handles text, images, audio, and video in one retrieval pipeline.  <br>It combines CLIP embeddings, Whisper transcription, vector search, and graph memory with Neo4j.<br><br>The interesting part was improving retrieval quality using hybrid ranking and reranking instead of relying on embeddings alone.<br><br>---<br><br>### Finance Document Assistant (Deployed on Kubernetes)<br>I built a hybrid RAG pipeline for financial documents and deployed it to AWS EKS.  <br>The system uses BM25 + dense retrieval, agent workflows, and evaluation dashboards to track retrieval quality and latency.<br><br>This project was mostly about infrastructure and evaluation, not just building the model.<br><br>---<br><br>### Two-Tower Recommender System<br>A full recommendation pipeline with TensorFlow Recommenders, FAISS retrieval, ranking models, and monitoring.<br><br>I focused on:<br>- Candidate generation vs ranking separation  <br>- Online inference APIs  <br>- Metrics like NDCG and Recall@K  <br><br>---<br><br>### Multi-Agent Orchestration Platform<br>A LangGraph-based system coordinating multiple agents through a FastAPI backend with PostgreSQL persistence.<br><br>This was where I spent time designing routing logic, memory, and observability rather than just chaining prompts.<br><br>---<br><br>### QLoRA Notebook Assistant<br>Fine-tuned a Mistral-7B model with dual adapters and routing logic to switch between explanation and code generation modes.<br><br>The most interesting challenge here was making a 7B model run reliably on limited GPU memory.<br><br>---<br><br>## Other Things I’ve Worked On<br><br>Some additional areas I’ve explored:<br><br>- Graph neural networks for fraud detection  <br>- OCR and document AI pipelines  <br>- YOLOv8 optimization with TensorRT  <br>- Healthcare ML (ECG anomaly detection, imaging models)  <br>- Causal inference and experimentation  <br>- ETL and data pipelines  <br><br>---<br><br>## How I Like to Work<br><br>I’m interested in problems where:<br><br>- Models are part of a larger system  <br>- Deployment and monitoring matter  <br>- Performance and latency are real constraints  <br>- Engineering decisions matter as much as model choice  <br><br>---<br><br>## Currently Looking For<br><br>Entry-level roles in:<br>- Machine Learning Engineering<br>- Applied AI / GenAI<br>- Data Science (applied / product-focused)<br><br>I’m authorized to work in the U.S. on F-1 OPT.<br><br>---<br><br>## Contact<br><br>Email: tgandhi1107@gmail.com  <br>LinkedIn: https://www.linkedin.com/in/theepankumar  <br>Portfolio: https://theepan-portfolio.netlify.app  <br><br>---<br><br>Outside of work, I like trekking and baking. One clears the head, the other feeds it.<br>
+## Hi, I’m Theepan
+
+I build machine learning systems that actually run in production — not just models in notebooks.
+
+Right now I’m finishing my Master’s in Data Science at Illinois Institute of Technology, and most of my work sits at the intersection of:
+
+- Retrieval-augmented generation (RAG)
+- Multi-agent LLM systems
+- Recommender systems and ranking
+- MLOps and deployment pipelines
+- Real-time inference and monitoring
+
+I enjoy building full systems end-to-end: training, evaluation, deployment, and observability.
+
+---
+
+## What I’ve Been Building Recently
+
+Here are a few projects that represent the kind of work I like doing.
+
+### AutoML Agents with LangGraph
+I built a multi-agent AutoML system that can generate pipelines, track experiments, and deploy models automatically.  
+It uses LangGraph for orchestration, MLflow for tracking, and DVC for versioning, with everything containerized and deployed on AWS.
+
+What I cared about here wasn’t just accuracy — it was reproducibility and automation.
+
+---
+
+### Multimodal RAG Assistant
+This project handles text, images, audio, and video in one retrieval pipeline.  
+It combines CLIP embeddings, Whisper transcription, vector search, and graph memory with Neo4j.
+
+The interesting part was improving retrieval quality using hybrid ranking and reranking instead of relying on embeddings alone.
+
+---
+
+### Finance Document Assistant (Deployed on Kubernetes)
+I built a hybrid RAG pipeline for financial documents and deployed it to AWS EKS.  
+The system uses BM25 + dense retrieval, agent workflows, and evaluation dashboards to track retrieval quality and latency.
+
+This project was mostly about infrastructure and evaluation, not just building the model.
+
+---
+
+### Two-Tower Recommender System
+A full recommendation pipeline with TensorFlow Recommenders, FAISS retrieval, ranking models, and monitoring.
+
+I focused on:
+- Candidate generation vs ranking separation  
+- Online inference APIs  
+- Metrics like NDCG and Recall@K  
+
+---
+
+### Multi-Agent Orchestration Platform
+A LangGraph-based system coordinating multiple agents through a FastAPI backend with PostgreSQL persistence.
+
+This was where I spent time designing routing logic, memory, and observability rather than just chaining prompts.
+
+---
+
+### QLoRA Notebook Assistant
+Fine-tuned a Mistral-7B model with dual adapters and routing logic to switch between explanation and code generation modes.
+
+The most interesting challenge here was making a 7B model run reliably on limited GPU memory.
+
+---
+
+## Other Things I’ve Worked On
+
+Some additional areas I’ve explored:
+
+- Graph neural networks for fraud detection  
+- OCR and document AI pipelines  
+- YOLOv8 optimization with TensorRT  
+- Healthcare ML (ECG anomaly detection, imaging models)  
+- Causal inference and experimentation  
+- ETL and data pipelines  
+
+---
+
+## How I Like to Work
+
+I’m interested in problems where:
+
+- Models are part of a larger system  
+- Deployment and monitoring matter  
+- Performance and latency are real constraints  
+- Engineering decisions matter as much as model choice  
+
+---
+
+## Currently Looking For
+
+Entry-level roles in:
+- Machine Learning Engineering
+- Applied AI / GenAI
+- Data Science (applied / product-focused)
+
+I’m authorized to work in the U.S. on F-1 OPT.
+
+---
+
+## Contact
+
+Email: tgandhi1107@gmail.com  
+LinkedIn: https://www.linkedin.com/in/theepankumar  
+Portfolio: https://theepan-portfolio.netlify.app  
+
+---
+
+Outside of work, I like trekking and baking. One clears the head, the other feeds it.
+
 
 
 # 💻 Tech Stack:
