@@ -1,82 +1,107 @@
-## Hi, I’m Theepan Kumar Gandhi
+## Hi, I’m Theepan
 
-Machine Learning Engineer and Data Science graduate student at Illinois Institute of Technology, focused on building and deploying real-world AI systems. I work on applied machine learning, large language model pipelines, recommender systems, and scalable ML infrastructure.
+I build machine learning systems that actually run in production — not just models in notebooks.
 
----
+Right now I’m finishing my Master’s in Data Science at Illinois Institute of Technology, and most of my work sits at the intersection of:
 
-## What I Work On
+- Retrieval-augmented generation (RAG)
+- Multi-agent LLM systems
+- Recommender systems and ranking
+- MLOps and deployment pipelines
+- Real-time inference and monitoring
 
-- Large Language Model (LLM) systems and RAG pipelines  
-- Multimodal search and vector retrieval systems  
-- Recommender systems and ranking models  
-- End-to-end ML pipelines and model deployment  
-- Cloud-based ML infrastructure and MLOps  
-
----
-
-## Core Technical Areas
-
-**Machine Learning & AI**
-- Deep Learning, NLP, Computer Vision
-- Representation learning and embeddings
-- Model evaluation and performance optimization
-
-**ML Engineering**
-- FastAPI, Docker, Kubernetes
-- Model deployment and inference pipelines
-- Feature engineering and data pipelines
-
-**Retrieval and Search**
-- Vector databases and semantic search
-- FAISS, BM25, hybrid retrieval architectures
-
-**Cloud & Infrastructure**
-- AWS (SageMaker, EC2, S3)
-- Scalable training and inference workflows
+I enjoy building full systems end-to-end: training, evaluation, deployment, and observability.
 
 ---
 
-## Selected Projects
+## What I’ve Been Building Recently
 
-*(This section should list your strongest projects. We will refine this together once you share the new projects.)*
+Here are a few projects that represent the kind of work I like doing.
 
-Example format:
+### AutoML Agents with LangGraph
+I built a multi-agent AutoML system that can generate pipelines, track experiments, and deploy models automatically.  
+It uses LangGraph for orchestration, MLflow for tracking, and DVC for versioning, with everything containerized and deployed on AWS.
 
-**Multimodal Product Search Engine**
-- Built a hybrid retrieval system combining CLIP embeddings, BM25 ranking, and FAISS indexing  
-- Achieved high-accuracy top-k retrieval across large product catalogs  
-- Designed API-based inference pipeline for real-time search  
-
-**Two-Tower Recommender System**
-- Implemented deep learning recommendation model with efficient vector retrieval  
-- Built real-time inference pipeline for personalized ranking  
-
-**ECG Anomaly Detection**
-- Developed deep learning models for medical time-series classification  
-- Designed preprocessing and feature extraction pipelines for physiological signals  
+What I cared about here wasn’t just accuracy — it was reproducibility and automation.
 
 ---
 
-## Currently Exploring
+### Multimodal RAG Assistant
+This project handles text, images, audio, and video in one retrieval pipeline.  
+It combines CLIP embeddings, Whisper transcription, vector search, and graph memory with Neo4j.
 
-- Advanced RAG architectures and multi-agent workflows  
-- Vector databases and retrieval optimization  
-- Scalable ML deployments and monitoring  
-
----
-
-## Open to Opportunities
-
-I’m actively seeking:
-- Machine Learning Engineer roles  
-- Applied AI / GenAI roles  
-- Entry-level Data Scientist positions  
-
-Authorized to work in the U.S. on F-1 OPT.
+The interesting part was improving retrieval quality using hybrid ranking and reranking instead of relying on embeddings alone.
 
 ---
 
-## Connect With Me
+### Finance Document Assistant (Deployed on Kubernetes)
+I built a hybrid RAG pipeline for financial documents and deployed it to AWS EKS.  
+The system uses BM25 + dense retrieval, agent workflows, and evaluation dashboards to track retrieval quality and latency.
+
+This project was mostly about infrastructure and evaluation, not just building the model.
+
+---
+
+### Two-Tower Recommender System
+A full recommendation pipeline with TensorFlow Recommenders, FAISS retrieval, ranking models, and monitoring.
+
+I focused on:
+- Candidate generation vs ranking separation  
+- Online inference APIs  
+- Metrics like NDCG and Recall@K  
+
+---
+
+### Multi-Agent Orchestration Platform
+A LangGraph-based system coordinating multiple agents through a FastAPI backend with PostgreSQL persistence.
+
+This was where I spent time designing routing logic, memory, and observability rather than just chaining prompts.
+
+---
+
+### QLoRA Notebook Assistant
+Fine-tuned a Mistral-7B model with dual adapters and routing logic to switch between explanation and code generation modes.
+
+The most interesting challenge here was making a 7B model run reliably on limited GPU memory.
+
+---
+
+## Other Things I’ve Worked On
+
+Some additional areas I’ve explored:
+
+- Graph neural networks for fraud detection  
+- OCR and document AI pipelines  
+- YOLOv8 optimization with TensorRT  
+- Healthcare ML (ECG anomaly detection, imaging models)  
+- Causal inference and experimentation  
+- ETL and data pipelines  
+
+---
+
+## How I Like to Work
+
+I’m interested in problems where:
+
+- Models are part of a larger system  
+- Deployment and monitoring matter  
+- Performance and latency are real constraints  
+- Engineering decisions matter as much as model choice  
+
+---
+
+## Currently Looking For
+
+Entry-level roles in:
+- Machine Learning Engineering
+- Applied AI / GenAI
+- Data Science (applied / product-focused)
+
+I’m authorized to work in the U.S. on F-1 OPT.
+
+---
+
+## Contact
 
 Email: tgandhi1107@gmail.com  
 LinkedIn: https://www.linkedin.com/in/theepankumar  
@@ -84,6 +109,4 @@ Portfolio: https://theepan-portfolio.netlify.app
 
 ---
 
-## Outside of Tech
-
-I enjoy trekking and baking — usually experimenting with one or the other on weekends.
+Outside of work, I like trekking and baking. One clears the head, the other feeds it.
