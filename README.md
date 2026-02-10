@@ -109,4 +109,4 @@ Portfolio: https://theepan-portfolio.netlify.app
 
 ---
 
-Outside of work, I like trekking and baking. One clears the head, the other feeds it.
+Outside of work, I love two things: cheese and cake, so I bake cheesecake a lot.
