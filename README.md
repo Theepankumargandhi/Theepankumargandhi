@@ -1,6 +1,6 @@
 ## Hi, I’m Theepan
 
-I build machine learning systems that actually run in production — not just models in notebooks.
+I build machine learning systems that actually run in production  not just models in notebooks.
 
 Right now I’m finishing my Master’s in Data Science at Illinois Institute of Technology, and most of my work sits at the intersection of:
 
