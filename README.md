@@ -1,8 +1,8 @@
 # Hi, I'm Theepan Kumar Gandhi
 
-I build **GenAI and machine learning systems that run in production** not just models in notebooks.
+I build **GenAI and machine learning systems that run in production** — not just models in notebooks.
 
-I'm currently finishing my **Master’s in Data Science at Illinois Institute of Technology**, and my work is centered around building end-to-end AI systems across:
+I'm currently finishing my **Master's in Data Science at Illinois Institute of Technology**, and my work is centered around building end-to-end AI systems across:
 
 - **Retrieval-augmented generation (RAG)**
 - **Multi-agent LLM systems**
@@ -11,14 +11,14 @@ I'm currently finishing my **Master’s in Data Science at Illinois Institute of
 - **MLOps, deployment, and observability**
 - **Real-time inference APIs**
 
-What I enjoy most is building the full system around the model:  
+What I enjoy most is building the full system around the model:
 **retrieval, routing, evaluation, serving, monitoring, and iteration.**
 
 ---
 
 ## What I Focus On
 
-I’m especially interested in problems where:
+I'm especially interested in problems where:
 
 - LLMs need strong retrieval, grounding, and routing
 - models are part of a larger production system
@@ -28,98 +28,83 @@ I’m especially interested in problems where:
 
 ---
 
-## Featured Work
+## Featured Projects
 
 ### Multi-Agent Orchestration Platform
-A production-oriented **LangGraph** system with supervisor-based routing, FastAPI backend, Streamlit frontend, PostgreSQL persistence, local RAG, knowledge graph retrieval, HITL gating, and observability.
+`LangGraph` `FastAPI` `ChromaDB` `PostgreSQL` `Redis` `Prometheus` `Grafana` `Kubernetes` `MCP`
 
-**Focus areas:**
-- supervisor/router design for multi-agent workflows
-- hybrid retrieval and tool-using agents
-- auth, persistence, and streaming APIs
-- monitoring with Prometheus and Grafana
-- human-in-the-loop approval for web/recent queries
+A production-oriented 12-agent LangGraph system built around a supervisor routing pattern, hybrid RAG retrieval, and full observability from day one.
+
+The routing layer uses deterministic rules first — only falling back to an LLM classifier for low-signal queries. Retrieval combines ChromaDB vector search, BM25 lexical ranking, and Reciprocal Rank Fusion with an LLM reranker on top. A knowledge graph agent handles relationship-style local queries via NetworkX. Human-in-the-loop gating is graph-native — Streamlit surfaces Approve/Reject buttons for web and recency queries before they execute. MCP bridges web search and calculator tools with local fallback if unavailable. Caching runs on Redis with automatic in-memory fallback. Persistence is dual-layer: LangGraph PostgreSQL checkpointer for graph state, plus a separate conversation store. Per-user auth, CI/CD via GitHub Actions, and Kubernetes manifests are all included.
+
+[View Repository](https://github.com/Theepankumargandhi/Multi-Agent-Orchestration)
+
+---
+
+### Autonomous CI Failure Fixer
+`LangGraph` `FastAPI` `OpenAI` `PostgreSQL` `GitHub Actions API` `Prometheus` `Docker`
+
+An autonomous agent that watches failed GitHub Actions runs, diagnoses the failure, generates a minimal code fix, validates it in an isolated workspace, and opens a pull request — without human intervention.
+
+The system supports two modes: automatic via a GitHub webhook on workflow_run events, and manual via a Streamlit operator console. The LangGraph state machine moves through eight explicit stages — ingest, triage, diagnose, reproduce, patch, validate, evaluate, and PR or escalate. Patch generation uses OpenAI with a heuristic fallback. Every fix must pass lint and tests in a disposable workspace before a PR is opened. Guardrails enforce allowlisted paths only, block secret-like files, and cap patch size. Low-confidence or exhausted retries escalate to a human. Six Prometheus metrics track success rate, MTTR, escalation rate, and false-positive PR rate.
+
+[View Repository](https://github.com/Theepankumargandhi/autonomous-agent-github-actions-ci-fixer)
 
 ---
 
 ### Finance Document Assistant
-A **hybrid RAG pipeline** for financial documents built around dense retrieval, lexical retrieval, agent workflows, and evaluation tracking.
+`LangChain` `Elasticsearch` `FAISS` `BERT` `MLflow` `DVC` `PostgreSQL` `Docker` `AWS EKS`
 
-**Focus areas:**
-- BM25 + dense retrieval pipelines
-- RAG evaluation and retrieval quality tracking
-- Kubernetes deployment on AWS EKS
-- latency and system-level performance monitoring
-- building retrieval systems that are measurable, not just demoable
+A hybrid RAG pipeline for financial documents built around dense and lexical retrieval, LangChain agent workflows, and a full evaluation layer — deployed on AWS EKS.
 
----
+Retrieval combines BM25 and SentenceTransformer embeddings fused with Reciprocal Rank Fusion over Elasticsearch. A distilBERT extractive QA model handles direct answer extraction. The evaluation pipeline runs automatically — logging Hit Rate, MRR, and latency per query to MLflow. PostgreSQL captures user interactions and satisfaction signals for downstream analysis. The system is containerized with Docker, deployed via GitHub Actions CI/CD to AWS EKS with Kubernetes manifests for namespace, secrets, deployment, and service.
 
-### Multimodal RAG Assistant
-A multimodal retrieval pipeline that works across **text, images, audio, and video**.
-
-**Focus areas:**
-- CLIP-based multimodal embeddings
-- Whisper-based transcription
-- vector search and graph memory
-- hybrid retrieval and reranking
-- improving retrieval quality beyond embedding-only search
+[View Repository](https://github.com/Theepankumargandhi/Finance-Document-Assistant-RAG-Agents)
 
 ---
 
-### AutoML Agents with LangGraph
-A multi-agent AutoML system that helps generate pipelines, run experiments, track results, and support deployment workflows.
+### LLM Annotation Quality Pipeline
+`OpenAI` `Cohen's Kappa` `Fleiss' Kappa` `SQLite` `AWS S3` `Streamlit`
 
-**Focus areas:**
-- LangGraph orchestration
-- MLflow for experiment tracking
-- DVC for reproducibility and versioning
-- containerized workflows on AWS
-- automation and reproducibility over one-off modeling
+A production-grade pipeline for validating annotation consistency and evaluating LLM output quality on QA datasets — treating evaluation as a first-class engineering concern, not an afterthought.
 
----
+The pipeline ingests raw QA annotations, runs inter-annotator agreement scoring using both Cohen's Kappa and Fleiss' Kappa, validates schema correctness, and scores LLM outputs using an LLM-as-judge approach via the OpenAI API. All results are logged to SQLite with AWS S3 for artifact storage. A Streamlit dashboard surfaces agreement metrics, judge scores, dataset quality summaries, and evaluation trends across runs.
 
-### QLoRA Notebook Assistant
-A fine-tuned notebook assistant for theory explanation and code generation using a resource-constrained setup.
-
-**Focus areas:**
-- QLoRA fine-tuning
-- dual-adapter style routing
-- instruction tuning for technical workflows
-- efficient LLM training under limited GPU memory
-- practical model behavior over benchmark-only tuning
+[View Repository](https://github.com/Theepankumargandhi/llm-annotation-quality-pipeline)
 
 ---
 
-### Two-Tower Recommender System
-A recommendation pipeline built with retrieval and ranking stages separated cleanly for production-style serving.
+### QLoRA Notebook Assistant — Mistral-7B Fine-Tuning
+`QLoRA` `PEFT` `Mistral-7B` `Hugging Face` `Dual Adapters` `Instruction Tuning`
 
-**Focus areas:**
-- candidate generation with two-tower retrieval
-- FAISS-based ANN search
-- ranking models and offline evaluation
-- Recall@K and NDCG-driven iteration
-- API-based serving and monitoring
+A fine-tuned assistant for data science notebooks, built to switch between theory explanation and code generation modes — trained under real resource constraints on limited GPU memory.
+
+The core challenge was fitting a 7B model into a constrained training environment. QLoRA handles this via 4-bit quantization combined with LoRA adapters. Two separate adapter sets are trained — one tuned for conceptual explanation, one for code generation — with a routing layer that selects the right adapter based on query intent at inference time. The focus throughout was on practical model behavior: consistent, reliable outputs for technical workflows rather than benchmark-optimized results.
+
+[View Repository](https://github.com/Theepankumargandhi/Data-Science-Notebook-Assistant-Theory-Code-Hybrid-QLoRA-)
 
 ---
 
-## Other Areas I've Worked In
+## Also Worked On
 
-Beyond GenAI, I’ve also worked on:
+**Multi-Stage Two-Tower Recommender**
+`TensorFlow Recommenders` `FAISS` `FastAPI` `MLflow` `DVC` `Airflow` `A/B Testing` `Prometheus`
 
-- document AI and OCR workflows
-- graph-based ML and fraud detection
-- healthcare ML
-- time-series and anomaly detection
-- computer vision systems
-- ETL and data pipelines
-- analytics dashboards and business intelligence
+**AutoML LangGraph Assistant**
+`LangGraph` `ChromaDB` `OpenAI GPT-4o` `MLflow` `DVC` `AWS EC2/S3` `MCP` `Docker`
+
+**ECG Anomaly Detection — LSTM AutoEncoder**
+`TensorFlow` `Keras` `LSTM AutoEncoder` `Unsupervised` `97.93% accuracy`
+
+**Brain Tumor Segmentation**
+`PyTorch` `ResNeXt50-UNet` `Streamlit` `LGG MRI`
 
 ---
 
 ## Tech I Work With
 
 **LLM / GenAI**
-`LangGraph` `LangChain` `LlamaIndex` `RAG` `Agentic AI` `QLoRA` `Vector Search` `Hybrid Retrieval` `Reranking`
+`LangGraph` `LangChain` `LlamaIndex` `RAG` `Agentic AI` `QLoRA` `PEFT` `MCP` `LlamaGuard` `Vector Search` `Hybrid Retrieval` `Reranking`
 
 **ML / Retrieval / Ranking**
 `PyTorch` `TensorFlow` `scikit-learn` `FAISS` `BM25` `XGBoost` `MLflow` `DVC`
@@ -132,42 +117,27 @@ Beyond GenAI, I’ve also worked on:
 
 ---
 
-## Selected Repositories
-
-- [Multi-Agent-Orchestration](https://github.com/Theepankumargandhi/Multi-Agent-Orchestration)
-- [Finance-Document-Assistant-RAG-Agents](https://github.com/Theepankumargandhi/Finance-Document-Assistant-RAG-Agents)
-- [Finance-Document-Assistant-RAG-Agents-LlamaIndex](https://github.com/Theepankumargandhi/Finance-Document-Assistant-RAG-Agents-LlamaIndex)
-- [Multimodal-rag-assistant](https://github.com/Theepankumargandhi/Multimodal-rag-assistant)
-- [Multimodal-rag-assistant--Llamaindex](https://github.com/Theepankumargandhi/Multimodal-rag-assistant--Llamaindex)
-- [automl-langgraph-assistant](https://github.com/Theepankumargandhi/automl-langgraph-assistant)
-- [Data-Science-Notebook-Assistant-Theory-Code-Hybrid-QLoRA-](https://github.com/Theepankumargandhi/Data-Science-Notebook-Assistant-Theory-Code-Hybrid-QLoRA-)
-- [multi-stage-two-tower-recommender](https://github.com/Theepankumargandhi/multi-stage-two-tower-recommender)
-- [llm-annotation-quality-pipeline](https://github.com/Theepankumargandhi/llm-annotation-quality-pipeline)
-- [autonomous-agent-github-actions-ci-fixer](https://github.com/Theepankumargandhi/autonomous-agent-github-actions-ci-fixer)
-
----
-
 ## Currently Looking For
 
-I’m looking for **entry-level roles** in:
+I'm looking for entry-level roles in:
 
 - Machine Learning Engineering
 - Applied AI / GenAI
 - Data Science with strong ML systems focus
 
-I’m authorized to work in the U.S. on **F-1 OPT**.
+I'm authorized to work in the U.S. on **F-1 OPT**.
 
 ---
 
 ## Contact
 
-- **Email:** [tgandhi1107@gmail.com](mailto:tgandhi1107@gmail.com)
-- **LinkedIn:** [linkedin.com/in/theepankumar](https://www.linkedin.com/in/theepankumar)
-- **Portfolio:** [theepan-portfolio.netlify.app](https://theepan-portfolio.netlify.app)
+- Email: [tgandhi1107@gmail.com](mailto:tgandhi1107@gmail.com)
+- LinkedIn: [linkedin.com/in/theepankumar](https://www.linkedin.com/in/theepankumar)
+- Portfolio: [theepan-portfolio.netlify.app](https://theepan-portfolio.netlify.app)
 
 ---
 
-Outside of work, I like trekking and baking.  
+Outside of work, I like trekking and baking.
 One clears the head, the other feeds it.
 
 # 💻 Tech Stack:
