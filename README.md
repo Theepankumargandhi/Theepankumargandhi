@@ -33,9 +33,13 @@ I'm especially interested in problems where:
 ### Multi-Agent Orchestration Platform
 `LangGraph` `FastAPI` `ChromaDB` `PostgreSQL` `Redis` `Prometheus` `Grafana` `Kubernetes` `MCP`
 
-A production-oriented 12-agent LangGraph system built around a supervisor routing pattern, hybrid RAG retrieval, and full observability from day one.
-
-The routing layer uses deterministic rules first — only falling back to an LLM classifier for low-signal queries. Retrieval combines ChromaDB vector search, BM25 lexical ranking, and Reciprocal Rank Fusion with an LLM reranker on top. A knowledge graph agent handles relationship-style local queries via NetworkX. Human-in-the-loop gating is graph-native — Streamlit surfaces Approve/Reject buttons for web and recency queries before they execute. MCP bridges web search and calculator tools with local fallback if unavailable. Caching runs on Redis with automatic in-memory fallback. Persistence is dual-layer: LangGraph PostgreSQL checkpointer for graph state, plus a separate conversation store. Per-user auth, CI/CD via GitHub Actions, and Kubernetes manifests are all included.
+- 12-agent LangGraph graph with supervisor routing: deterministic rules first, LLM classifier fallback for low-signal queries
+- Hybrid RAG pipeline: ChromaDB vector search + BM25 lexical ranking + Reciprocal Rank Fusion + LLM reranker
+- Knowledge graph agent using NetworkX for relationship-style local queries
+- Graph-native Human-in-the-Loop (HITL): Streamlit Approve/Reject buttons for web and recency queries
+- MCP tool bridge for web search and calculator with automatic local fallback
+- TTL caching on Redis with in-memory fallback; dual-layer persistence via LangGraph PostgreSQL checkpointer + conversation store
+- Per-user auth, CI/CD via GitHub Actions, Kubernetes manifests, and Prometheus/Grafana monitoring included
 
 [View Repository](https://github.com/Theepankumargandhi/Multi-Agent-Orchestration)
 
@@ -44,9 +48,13 @@ The routing layer uses deterministic rules first — only falling back to an LLM
 ### Autonomous CI Failure Fixer
 `LangGraph` `FastAPI` `OpenAI` `PostgreSQL` `GitHub Actions API` `Prometheus` `Docker`
 
-An autonomous agent that watches failed GitHub Actions runs, diagnoses the failure, generates a minimal code fix, validates it in an isolated workspace, and opens a pull request — without human intervention.
-
-The system supports two modes: automatic via a GitHub webhook on workflow_run events, and manual via a Streamlit operator console. The LangGraph state machine moves through eight explicit stages — ingest, triage, diagnose, reproduce, patch, validate, evaluate, and PR or escalate. Patch generation uses OpenAI with a heuristic fallback. Every fix must pass lint and tests in a disposable workspace before a PR is opened. Guardrails enforce allowlisted paths only, block secret-like files, and cap patch size. Low-confidence or exhausted retries escalate to a human. Six Prometheus metrics track success rate, MTTR, escalation rate, and false-positive PR rate.
+- Autonomous agent that detects failed GitHub Actions runs, diagnoses the failure, generates a code fix, and opens a PR — without human intervention
+- LangGraph state machine with eight explicit stages: ingest → triage → diagnose → reproduce → patch → validate → evaluate → PR or escalate
+- Two trigger modes: automatic via GitHub webhook on `workflow_run` events, and manual via Streamlit operator console
+- Patch generation uses OpenAI Responses API with strict JSON-schema output; heuristic fallback for local/demo scenarios
+- Every fix must pass lint and tests in a disposable isolated workspace before a PR is opened
+- Guardrails enforce allowlisted paths only, block secret-like files, cap patch size, and escalate low-confidence results
+- Six Prometheus metrics: success rate, first-patch pass rate, MTTR, escalation rate, false-positive PR rate, retry count
 
 [View Repository](https://github.com/Theepankumargandhi/autonomous-agent-github-actions-ci-fixer)
 
@@ -55,9 +63,12 @@ The system supports two modes: automatic via a GitHub webhook on workflow_run ev
 ### Finance Document Assistant
 `LangChain` `Elasticsearch` `FAISS` `BERT` `MLflow` `DVC` `PostgreSQL` `Docker` `AWS EKS`
 
-A hybrid RAG pipeline for financial documents built around dense and lexical retrieval, LangChain agent workflows, and a full evaluation layer — deployed on AWS EKS.
-
-Retrieval combines BM25 and SentenceTransformer embeddings fused with Reciprocal Rank Fusion over Elasticsearch. A distilBERT extractive QA model handles direct answer extraction. The evaluation pipeline runs automatically — logging Hit Rate, MRR, and latency per query to MLflow. PostgreSQL captures user interactions and satisfaction signals for downstream analysis. The system is containerized with Docker, deployed via GitHub Actions CI/CD to AWS EKS with Kubernetes manifests for namespace, secrets, deployment, and service.
+- Hybrid RAG pipeline combining BM25 + SentenceTransformer dense embeddings fused via Reciprocal Rank Fusion over Elasticsearch
+- distilBERT extractive QA model for direct answer extraction from financial documents
+- LangChain agent workflows for context-aware multi-step document reasoning
+- Automated evaluation pipeline logging Hit Rate, MRR, and latency per query to MLflow
+- PostgreSQL captures user interactions and satisfaction signals for downstream analysis
+- Containerized with Docker, deployed via GitHub Actions CI/CD to AWS EKS with full Kubernetes manifests
 
 [View Repository](https://github.com/Theepankumargandhi/Finance-Document-Assistant-RAG-Agents)
 
@@ -66,9 +77,12 @@ Retrieval combines BM25 and SentenceTransformer embeddings fused with Reciprocal
 ### LLM Annotation Quality Pipeline
 `OpenAI` `Cohen's Kappa` `Fleiss' Kappa` `SQLite` `AWS S3` `Streamlit`
 
-A production-grade pipeline for validating annotation consistency and evaluating LLM output quality on QA datasets — treating evaluation as a first-class engineering concern, not an afterthought.
-
-The pipeline ingests raw QA annotations, runs inter-annotator agreement scoring using both Cohen's Kappa and Fleiss' Kappa, validates schema correctness, and scores LLM outputs using an LLM-as-judge approach via the OpenAI API. All results are logged to SQLite with AWS S3 for artifact storage. A Streamlit dashboard surfaces agreement metrics, judge scores, dataset quality summaries, and evaluation trends across runs.
+- Production-grade pipeline for validating annotation consistency and evaluating LLM output quality on QA datasets
+- Inter-annotator agreement scoring using both Cohen's Kappa and Fleiss' Kappa across multiple annotators
+- Schema validation layer flags malformed or inconsistent annotation records before scoring
+- LLM-as-judge scoring via OpenAI API to evaluate response quality at scale
+- All results logged to SQLite with AWS S3 for artifact and report storage
+- Streamlit dashboard surfaces agreement metrics, judge scores, dataset quality summaries, and evaluation trends
 
 [View Repository](https://github.com/Theepankumargandhi/llm-annotation-quality-pipeline)
 
@@ -77,9 +91,11 @@ The pipeline ingests raw QA annotations, runs inter-annotator agreement scoring 
 ### QLoRA Notebook Assistant — Mistral-7B Fine-Tuning
 `QLoRA` `PEFT` `Mistral-7B` `Hugging Face` `Dual Adapters` `Instruction Tuning`
 
-A fine-tuned assistant for data science notebooks, built to switch between theory explanation and code generation modes — trained under real resource constraints on limited GPU memory.
-
-The core challenge was fitting a 7B model into a constrained training environment. QLoRA handles this via 4-bit quantization combined with LoRA adapters. Two separate adapter sets are trained — one tuned for conceptual explanation, one for code generation — with a routing layer that selects the right adapter based on query intent at inference time. The focus throughout was on practical model behavior: consistent, reliable outputs for technical workflows rather than benchmark-optimized results.
+- Fine-tuned Mistral-7B under resource constraints using QLoRA: 4-bit quantization + LoRA adapters on limited GPU memory
+- Two separate adapter sets trained: one for conceptual explanation mode, one for code generation mode
+- Runtime routing layer selects the correct adapter based on query intent at inference time
+- Instruction-tuned for data science notebook workflows — explanation, debugging, and code generation tasks
+- Focus on reliable, consistent outputs for technical use cases rather than benchmark-only performance
 
 [View Repository](https://github.com/Theepankumargandhi/Data-Science-Notebook-Assistant-Theory-Code-Hybrid-QLoRA-)
 
